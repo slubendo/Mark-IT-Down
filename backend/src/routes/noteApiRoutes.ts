@@ -26,8 +26,8 @@ noteRoutes.put('/:id', async (req: Request, res: Response): Promise<void> => {
     res.json({ noteInfo });
 });
 
-noteRoutes.delete('/:id', (req: Request, res: Response): void => {
+noteRoutes.delete('/:id', async (req: Request, res: Response): Promise<void> => {
     let id = parseInt(req.params.id)
-    deleteNote(id)
+    await deleteNote(id)
     res.json(`note ${id} deleted`)
 });

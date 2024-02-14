@@ -34,8 +34,8 @@ notebookRoutes.put('/:id', async (req: Request, res: Response): Promise<void> =>
     res.json({ noteInfo });
 });
 
-notebookRoutes.delete('/:id', (req: Request, res: Response): void => {
+notebookRoutes.delete('/:id', async (req: Request, res: Response): Promise<void> => {
     let id = parseInt(req.params.id)
-    deleteNotebook(id)
+    await deleteNotebook(id)
     res.json(`note ${id} deleted`)
 });
