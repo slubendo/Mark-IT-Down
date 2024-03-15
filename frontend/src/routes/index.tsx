@@ -1,6 +1,5 @@
 import React, { useState } from 'react'; // Import useState from React
 import { createFileRoute } from '@tanstack/react-router'
-import Markdownit from 'markdown-it'
 
 
 
@@ -9,20 +8,25 @@ export const Route = createFileRoute('/')({
 });
 
 function Home() {
-  const [text, setText] = useState(""); 
 
-  const handleTextChange = (event:React.ChangeEvent<HTMLTextAreaElement>) => { 
-    event.preventDefault()
-    setText(event.target.value);
-  };
-
-  const md = new Markdownit();
-  const renderText = md.render(text)
 
   return (
-    <div className=''>
-      <h3 className=''>Welcome home!</h3>
-      <div contentEditable={true} onBlur={(e) => setText(e.target.innerText)} dangerouslySetInnerHTML={{ __html: renderText }}></div> 
+    <div className='grid grid-rows-3'>
+      <div className='row-span-1'>
+        <img src='/DeskBanner.jpeg' alt='Desk Banner' className='object-fit w-full'/>
+      </div>
+      <div className='row-span-2'>
+        <div className='py-2 px-4'>
+          <h1 className='mb-0'>Welcome to MarkITDown</h1>
+          <p>Are you ready to take notes and MarkItDown?</p>
+        </div>
+
+        <div className='px-10 py-2'>
+          <p>Most Recent Notes</p>
+          <div className='w-56 h-80 bg-slate-100'></div>
+        </div>
+
+      </div>
     </div> 
   );
   

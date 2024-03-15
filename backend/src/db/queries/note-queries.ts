@@ -1,5 +1,7 @@
 import { db, eq, desc } from "../index"
 import { notes } from "../schema/notes"
+import { notebooks } from "../schema/notebooks"
+
 
 
 export async function noteList() {
@@ -8,10 +10,18 @@ export async function noteList() {
             .select({
                 id: notes.id,
                 note: notes.note,
-                notebook: notes.notebookId,
+                title: notes.title,
+                notebookId: notes.notebookId,
                 createdAt: notes.createdAt,
+
+                notebook: {
+                    id: notebooks.id,
+                    notebook:notebooks.notebook
+                }
             })
             .from(notes)
+            .fullJoin(notebooks, eq(notebooks.id, notes.notebookId))
+
         if (note) {
             return note
         } else {

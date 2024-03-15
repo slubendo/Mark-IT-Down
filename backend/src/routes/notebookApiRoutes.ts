@@ -5,21 +5,17 @@ export const notebookRoutes = express.Router();
 
 
 
-notebookRoutes.get('/:id', async (req: Request, res: Response): Promise<void> => {
+notebookRoutes.get('/book/:id', async (req: Request, res: Response): Promise<void> => {
     let id = parseInt(req.params.id)
-    const note = await notebookId(id)
-    res.json({ note })
+    const notebook = await notebookId(id)
+    res.json({ notebook })
 });
 
-notebookRoutes.get('/notebooks', async (req: Request, res: Response): Promise<void> => {
-    const note = await notebooksList()
-    if ('error' in note) {
-        res.json({ error: note.error });
-    } else {
-        const noteSet = new Set(note);
-        res.json({ note: Array.from(noteSet) });
+notebookRoutes.get('/list/all', async (req: Request, res: Response): Promise<void> => {
+    const notebooks = await notebooksList()
+        res.json(notebooks);
     }
-});
+);
 
 notebookRoutes.post('/create', async (req: Request, res: Response): Promise<void> => {
     let notebook = req.body.notebook
@@ -30,8 +26,8 @@ notebookRoutes.post('/create', async (req: Request, res: Response): Promise<void
 notebookRoutes.put('/:id', async (req: Request, res: Response): Promise<void> => {
     let id = parseInt(req.params.id)
     let notebook = req.body.note
-    let noteInfo = await updateNotebook(id, notebook)
-    res.json({ noteInfo });
+    let notebookInfo = await updateNotebook(id, notebook)
+    res.json({ notebookInfo });
 });
 
 notebookRoutes.delete('/:id', async (req: Request, res: Response): Promise<void> => {

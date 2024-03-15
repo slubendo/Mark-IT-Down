@@ -5,6 +5,7 @@ export async function notebooksList() {
     try {
         const note = db
             .select({
+                id:notebooks.id,
                 notebook: notebooks.notebook, 
             })
             .from(notebooks)

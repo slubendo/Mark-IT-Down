@@ -1,9 +1,19 @@
 import express, { Request, Response } from 'express';
-import { createNote, deleteNote, noteId, updateNote } from '../db/queries/note-queries';
+import { createNote, deleteNote, noteId, noteList, updateNote } from '../db/queries/note-queries';
 
 export const noteRoutes = express.Router();
 
 
+
+noteRoutes.get('/list/all', async (req: Request, res: Response): Promise<void> => {
+    const note = await noteList()
+    if ('error' in note) {
+        res.json({ error: note.error });
+    } else {
+        const noteSet = new Set(note);
+        res.json({ note: Array.from(noteSet) });
+    }
+});
 
 noteRoutes.get('/:id', async (req: Request, res: Response): Promise<void> => {
     let id = parseInt(req.params.id)

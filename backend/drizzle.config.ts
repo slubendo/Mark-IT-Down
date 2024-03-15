@@ -16,7 +16,7 @@ export default {
   schema: "./src/db/schema/*",
   driver: "pg",
   dbCredentials: {
-    connectionString: 'postgresql://slubendo:aBhXLSwDQ80M@ep-square-band-32006169.us-west-2.aws.neon.tech/neondb?sslmode=require',
+    connectionString: 'postgresql://s.v.lubendo:PBAmO98hlbEQ@ep-lively-butterfly-a6xs61gi.us-west-2.aws.neon.tech/neondb?sslmode=require',
   },
   out: "./drizzle",
 } satisfies Config

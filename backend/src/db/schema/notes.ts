@@ -4,6 +4,7 @@ import { notebooks } from "./notebooks";
 export const notes = pgTable("notes", {
     id: serial("id").primaryKey(),
     note: text("note").notNull(),
+    title: text("title").notNull().default("Untitled"),
     notebookId: serial("notebook_Id").references(() => notebooks.id),
     createdAt: timestamp("created_at").notNull().defaultNow(),
 })
