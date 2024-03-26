@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Outlet, Link } from "@tanstack/react-router";
 import { createRootRoute } from "@tanstack/react-router";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faMagnifyingGlass, faTrashCan, faPlus, faHouse, faFileLines } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faMagnifyingGlass, faPlus, faHouse, faFileLines } from '@fortawesome/free-solid-svg-icons';
 
 export const Route = createRootRoute({
   component: Root,

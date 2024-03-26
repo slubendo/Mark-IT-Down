@@ -1,4 +1,4 @@
-import { useNavigate, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import React from "react";
 
 export const Route = createFileRoute('/notebook/$notebook')({
@@ -6,7 +6,7 @@ export const Route = createFileRoute('/notebook/$notebook')({
 })
 
 function notebook() {
-  const { notebook } = Route.useParams()
+  // const { notebook } = Route.useParams()
 
     return (
       <div className='grid grid-rows-3'>

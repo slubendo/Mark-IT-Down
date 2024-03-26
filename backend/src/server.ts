@@ -17,12 +17,11 @@ app.use("/api/note", noteRoutes)
 app.use("/api/notebook", notebookRoutes)
 
 
-const PORT = 8000;
+const PORT = 8001;
 
 app.get('/', (req: Request, res: Response): void => {
-    const indexPath = path.join(__dirname, './static/index.html');
-    // res.sendFile(indexPath);
-    res.send("Hello");
+    const index= path.join(__dirname, './app/index.html');
+    res.render("index.html");
 });
 
 
